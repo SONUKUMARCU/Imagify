@@ -1,7 +1,11 @@
 import React from 'react'
 import { assets } from '../assets/assets'
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
+
+    const navigate = useNavigate();
+
     return (
         <div className='flex flex-col items-center mt-10'>
             <div className='text-gray-600 text-sm border-gray-400 border-1 rounded-full flex items-center gap-2 px-6 py-1 w-fit mt-10 bg-white'>
@@ -13,7 +17,10 @@ const Header = () => {
 
             <p className='mx-auto mt-5 text-gray-600 max-w-xl text-center'>Unleash your creativity with AI. Turn your imagination into visual art in seconds – just type, and watch the magic happen.</p>
 
-            <button className='mt-8 mx-auto px-12 py-2.5 rounded-full cursor-pointer bg-black text-white flex items-center gap-2 w-auto'>
+            <button 
+                className='mt-8 mx-auto px-12 py-2.5 rounded-full cursor-pointer bg-black text-white flex items-center gap-2 w-auto'
+                onClick={()=> navigate("/result")}
+            >
                 <span className='sm:text-lg text-gray-200'>Generate Images</span>
                 <img className='h-6' src={assets.star_group} alt="" />
             </button>
