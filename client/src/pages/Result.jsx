@@ -11,7 +11,6 @@ const Result = () => {
 
     const submitHandler = async(e)=>{
         e.preventDefault();
-        // console.log(value);
         console.log(userInput)
     }
 
