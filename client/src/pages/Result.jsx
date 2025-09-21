@@ -25,7 +25,7 @@ const Result = () => {
                             className={`absolute bottom-0 left-0 h-1 bg-blue-500 ${loading ? 'w-full transition-all duration-[10s] rounded-full' : 'w-0'}`}
                         ></span>
                     </div>
-                    <p className={`${!loading ? "hidden" : "visible"}`}>Loading...</p>
+                    <p className={`${!loading ? "hidden" : "visible border-4 border-gray-300 size-10 rounded-full border-t-4 border-t-blue-500 animate-spin duration-100 scroll-smooth"}`}></p>
                     <form 
                         className='bg-gray-600 rounded-full flex items-center justify-between p-1 w-full max-sm:max-w-lg'
                         onSubmit={submitHandler}

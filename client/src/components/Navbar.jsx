@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { assets } from "../assets/assets"
-import { Link,useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 
 const Navbar = () => {
 
-    const {user} = useAppContext();
+    const { user,setShowLogin } = useAppContext();
 
     const navigate = useNavigate();
 
@@ -18,11 +18,11 @@ const Navbar = () => {
                 {
                     user ? (
                         <div className='flex items-center gap-2 sm:gap-3'>
-                            <button 
+                            <button
                                 className='flex gap-2 items-center bg-[#D7EBFF] px-4 py-1.5 sm:px-6 sm:py-3 rounded-full hover:scale-105 transition-all duration-700 cursor-pointer'
-                                onClick={()=> navigate("/buy")}
+                                onClick={() => navigate("/buy")}
                             >
-                                <img src={assets.credit_star} alt="creditstar"/>
+                                <img src={assets.credit_star} alt="creditstar" />
                                 <p className='text-gray-600 text-xs sm:text-sm font-medium'>Credits left:50</p>
                             </button>
                             <p className='text-gray-600 max-sm:hidden'>Hi! Sonu</p>
@@ -37,10 +37,13 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <div className='flex items-center gap-2 sm:gap-5'>
-                            <p onClick={()=> navigate("/buy")} className='text-gray-600 cursor-pointer'>Pricing</p>
-                            <button className='px-15 py-2 rounded-full cursor-pointer bg-zinc-900 text-white'>
+                            <p onClick={() => navigate("/buy")} className='text-gray-600 cursor-pointer'>Pricing</p>
+                            <button 
+                                className='px-15 py-2 rounded-full cursor-pointer bg-zinc-900 text-white'
+                                onClick={()=> setShowLogin(true)}
+                            >
                                 Login
-                            </button> 
+                            </button>
                         </div>
                     )
                 }

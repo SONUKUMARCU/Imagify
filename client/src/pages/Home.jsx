@@ -5,6 +5,7 @@ import Description from '../components/Description'
 import Testimonials from '../components/Testimonials'
 import Magic from '../components/Magic'
 import Footer from '../components/Footer'
+import Login from '../components/Login'
 
 const Home = () => {
     return (
