@@ -22,8 +22,14 @@ const Login = () => {
         <div className='absolute top-0 bottom-0 right-0 left-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center'>
             <form action="" className='bg-white rounded-xl p-10 text-center relative'>
                 <h1 className='text-2xl sm:text-3xl font-medium'>{login}</h1>
-                <p className='text-sm text-[#575B86] mt-2'>Welcome back! Please sign in to continue</p>
+                {
+                    login === "Login" ? (
+                        <p className='text-sm text-[#575B86] mt-2'>Welcome back! Please sign in to continue</p>
 
+                    ) : (
+                        <p className='text-sm text-[#575B86] mt-2'>Create account to see the magic!</p>
+                    )
+                }
                 {
                     login !== "Login" && (
                         <div className='border-1 border-gray-300 rounded-full px-2 py-2 text-gray-600 gap-2 flex items-center justify-center mt-4'>
@@ -68,7 +74,7 @@ const Login = () => {
                     )
                 }
 
-                <img className='absolute top-6 right-6 cursor-pointer' src={assets.cross_icon} alt="" onClick={()=> setShowLogin(false)}/>
+                <img className='absolute top-6 right-6 cursor-pointer' src={assets.cross_icon} alt="" onClick={() => setShowLogin(false)} />
             </form>
         </div>
     )
