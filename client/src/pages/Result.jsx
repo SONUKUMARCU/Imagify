@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/assets'
+import { useAppContext } from '../context/AppContext';
 
 const Result = () => {
 
@@ -7,12 +8,15 @@ const Result = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [loading, setLoading] = useState(false);
     const [userInput, setUserInput] = useState("");
+    const { setShowLogin, user} = useAppContext();
 
 
-    const submitHandler = async(e)=>{
+    const submitHandler = async (e) => {
         e.preventDefault();
-        console.log(userInput)
+
+        if(!user) setShowLogin(true);
     }
+
 
 
     return (
@@ -26,16 +30,17 @@ const Result = () => {
                         ></span>
                     </div>
                     <p className={`${!loading ? "hidden" : "visible border-4 border-gray-300 size-10 rounded-full border-t-4 border-t-blue-500 animate-spin duration-100 scroll-smooth"}`}></p>
-                    <form 
+                    <form
                         className='bg-gray-600 rounded-full flex items-center justify-between p-1 w-full max-sm:max-w-lg'
                         onSubmit={submitHandler}
                     >
-                        <input 
-                            className='px-5 py-2 sm:px-5 sm:py-3 border flex-grow  border-none outline-none text-white' type="text" name="userinput" placeholder='Describe what you want to generate' 
+                        <input
+                            className='px-5 py-2 sm:px-5 sm:py-3 border flex-grow  border-none outline-none text-white' type="text" name="userinput" placeholder='Describe what you want to generate'
                             value={userInput}
-                            onChange={(e)=> setUserInput(e.target.value)}
+                            required
+                            onChange={(e) => setUserInput(e.target.value)}
                         />
-                        <button 
+                        <button
                             type='submit' className='bg-black text-white px-10 py-2  sm:px-20 sm:py-4 rounded-full cursor-pointer'
                         >Generate</button>
                     </form>
