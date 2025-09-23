@@ -11,9 +11,7 @@ const Login = () => {
 
     useEffect(() => {
         document.body.style.overflow = "hidden"
-        console.log("mounted")
         return () => {
-            console.log("hello");
             document.body.style.overflow = "unset"
         }
     }, [])

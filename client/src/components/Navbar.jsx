@@ -10,7 +10,7 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     return (
-        <div className='flex justify-between items-center py-4'>
+        <div className='flex justify-between items-center py-4' id='header'>
             <Link to="/">
                 <img src={assets.logo} alt="" />
             </Link>

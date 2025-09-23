@@ -2,10 +2,18 @@ import React from 'react'
 import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 import { motion } from "motion/react"
+import { useAppContext } from '../context/AppContext'
 
 const Header = () => {
 
     const navigate = useNavigate();
+    const { user,setShowLogin } = useAppContext();
+
+
+    const handleClickEvent = ()=>{
+        if(user) navigate("/result");
+        else setShowLogin(true)
+    }
 
     return (
         <motion.div
@@ -43,7 +51,7 @@ const Header = () => {
 
             <motion.button
                 className='mt-8 mx-auto px-12 py-2.5 rounded-full cursor-pointer bg-black text-white flex items-center gap-2 w-auto'
-                onClick={() => navigate("/result")}
+                onClick={handleClickEvent}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0 }}
@@ -54,10 +62,20 @@ const Header = () => {
                 <img className='h-6' src={assets.star_group} alt="" />
             </motion.button>
 
-            <div className='mt-16 flex flex-wrap gap-3'>
+            <motion.div 
+                className='mt-16 flex flex-wrap gap-3'
+                initial={{opacity : 0}}
+                animate={{opacity : 1}}
+                transition={{delay : 0.2, duration : 0.6}}
+            >
                 {
                     Array(6).fill('').map((item, index) => (
-                        <img
+                        <motion.img
+                            whileHover={{rotate : 360}}
+                            whileTap={{scale : 1.5}}
+                            initial={index % 2 === 0 ? {opacity : 0,x : 100,scale : 1.5} : {opacity : 0, x: -100,scale : 2}}
+                            animate={{opacity : 1, x : 0,scale : 1}}
+                            transition={{duration : 0.4}}
                             src={index % 2 == 0 ? assets.sample_img_2 : assets.sample_img_1}
                             width={70}
                             key={index}
@@ -66,7 +84,7 @@ const Header = () => {
                         />
                     ))
                 }
-            </div>
+            </motion.div>
             <p className='text-gray-600 mx-auto text-center mt-2 max-sm:text-sm'>Generated images from imagify</p>
         </motion.div>
     )

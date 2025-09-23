@@ -15,8 +15,8 @@ const Steps = () => {
                         <motion.div 
                             className='flex items-center gap-4 max-sm:py-2 max-sm:px-4 py-5 px-8 bg-white/20 border shadow-md border-gray-300 cursor-pointer hover:scale-[1.02] transition-all duration-300 rounded-lg' key={index}
                             initial={index % 2 === 0 ? {opacity : 0,x : -150} : {opacity : 0, x : 150}}
-                            animate={index % 2 === 0 ? {opacity : 1,x : 0} : {opacity : 1, x : 0}}
-                            transition={{delay : 0.2, duration : 1.5}}
+                            whileInView={index % 2 === 0 ? {opacity : 1,x : 0} : {opacity : 1, x : 0}}
+                            transition={{duration : 0.4}}
                         >
                             <img width={40} src={item.icon} alt="" />
                             <div>
