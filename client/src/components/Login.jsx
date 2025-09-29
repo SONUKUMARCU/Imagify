@@ -17,7 +17,7 @@ const Login = () => {
     }, [])
 
     return (
-        <div className='absolute top-0 bottom-0 right-0 left-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center'>
+        <div className='fixed top-0 bottom-0 right-0 left-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center'>
             <form action="" className='bg-white rounded-xl p-10 text-center relative'>
                 <h1 className='text-2xl sm:text-3xl font-medium'>{login}</h1>
                 {

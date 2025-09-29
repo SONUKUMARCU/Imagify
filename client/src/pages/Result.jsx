@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/assets'
 import { useAppContext } from '../context/AppContext';
+import { motion } from 'motion/react';
 
 const Result = () => {
 
@@ -20,7 +21,12 @@ const Result = () => {
 
 
     return (
-        <div className='flex flex-col items-center gap-10 mt-5 max-w-5xl mx-auto flex-grow w-full'>
+        <motion.div 
+            initial={{opacity : 0.2, y : 100}}
+            transition={{duration : 1}}
+            whileInView={{opacity : 1, y : 0}}
+            viewport={{once : true}}
+            className='flex flex-col items-center gap-10 mt-5 max-w-5xl mx-auto flex-grow w-full'>
             {
                 !isLoaded && <>
                     <div className='relative'>
@@ -62,7 +68,7 @@ const Result = () => {
                     </div>
                 </>
             }
-        </div>
+        </motion.div>
     )
 }
 
