@@ -1,6 +1,7 @@
 import React from 'react'
 import { plans, assets } from '../assets/assets'
 import { useAppContext } from '../context/AppContext'
+import { motion } from 'motion/react'
 
 const BuyCredit = () => {
 
@@ -8,7 +9,12 @@ const BuyCredit = () => {
 
 
     return (
-        <div className='flex-grow mt-10'>
+        <motion.div 
+            initial={{opacity : 0.2, y : 100}}
+            transition={{duration : 1}}
+            whileInView={{opacity : 1, y : 0}}
+            viewport={{once : true}}
+            className='flex-grow mt-10'>
             <h3 className='uppercase bg-white border-1 border-gray-200 rounded-full px-10 py-2 w-fit mx-auto mt-5'>OUR plans</h3>
             <h1 className="text-3xl text-center mt-5">Choose the plan</h1>
             <div className='flex flex-wrap mt-5 gap-6 sm:flex-row justify-center sm:mt-10'>
@@ -26,7 +32,7 @@ const BuyCredit = () => {
                     ))
                 }
             </div>
-        </div>
+        </motion.div>
     )
 }
 

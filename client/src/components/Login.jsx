@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { assets } from '../assets/assets'
 import { FiUser } from "react-icons/fi";
 import { useAppContext } from '../context/AppContext';
+import { motion } from 'motion/react';
 
 
 const Login = () => {
@@ -18,7 +19,12 @@ const Login = () => {
 
     return (
         <div className='fixed top-0 bottom-0 right-0 left-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center'>
-            <form action="" className='bg-white rounded-xl p-10 text-center relative'>
+            <motion.form
+                initial={{ opacity: 0.2, y: 50 }}
+                transition={{ duration: 0.3 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                action="" className='bg-white rounded-xl p-10 text-center relative'>
                 <h1 className='text-2xl sm:text-3xl font-medium'>{login}</h1>
                 {
                     login === "Login" ? (
@@ -73,7 +79,7 @@ const Login = () => {
                 }
 
                 <img className='absolute top-6 right-6 cursor-pointer' src={assets.cross_icon} alt="" onClick={() => setShowLogin(false)} />
-            </form>
+            </motion.form>
         </div>
     )
 }
