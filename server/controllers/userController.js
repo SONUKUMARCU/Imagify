@@ -1,5 +1,5 @@
 import userModel from "../models/userModel.js";
-import bcrypt from "bcryptjs";
+import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
 
 // User Registration
@@ -21,7 +21,7 @@ const registerUser = async (req, res) => {
         };
 
         const newUser = new userModel(userData);
-        const user = await userModel.save();
+        const user = await newUser.save();
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY);
 
@@ -34,7 +34,7 @@ const registerUser = async (req, res) => {
 }
 
 // User Login
-const userLogin = async (req, res) => {
+const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await userModel.findOne({ email });
@@ -56,4 +56,9 @@ const userLogin = async (req, res) => {
         console.log(error);
         res.json({ success: false, message: error.message });
     }
+}
+
+export {
+    loginUser,
+    registerUser
 }
